@@ -1,0 +1,42 @@
+{
+  "name": "stripe-example-ios-nodejs",
+  "version": "1.0.0",
+  "description": "a research project for ios-nodejs stripe.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/glennposadas/stripe-example-ios-nodejs.git"
+  },
+  "keywords": [
+    "stripe",
+    "node-express",
+    "ios"
+  ],
+  "author": "Glenn Posadas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/glennposadas/stripe-example-ios-nodejs/issues"
+  },
+  "homepage": "https://github.com/glennposadas/stripe-example-ios-nodejs#readme",
+  "dependencies": {
+    "async": "^3.2.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
+    "mysql2": "^2.1.0",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "sequelize": "^5.21.10",
+    "sequelize-cli": "^5.5.1",
+    "stripe": "^8.54.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
