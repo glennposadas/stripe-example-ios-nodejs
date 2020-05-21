@@ -6,15 +6,18 @@
 //  Copyright © 2020 GAM Dynamics. All rights reserved.
 //
 
+import Stripe
 import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        Stripe.setDefaultPublishableKey("pk_test_OvOsDyffiU9VtZdr55icDUfN00UGpshGSj")
+
+        
         return true
     }
 
