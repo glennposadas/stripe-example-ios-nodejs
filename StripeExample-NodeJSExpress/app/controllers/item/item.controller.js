@@ -19,7 +19,7 @@ const config = require("../../config/config")
 
 // Get the profile of the current user through JWT.
 exports.getAllItems = (req, res) => {
-  db.User.findAll({})
+  db.Item.findAll({})
     .then(data => {
       res.send(data)
     })
