@@ -13,7 +13,10 @@ module.exports = (sequelize, DataTypes) => {
   });
   // Association
   Item.associate = function (models) {
-    Item.belongsTo(models.OrderDetail, { as: "orderDetail" })
+    Item.hasMany(models.OrderDetail, {
+      foreignKey: "itemId",
+      sourceKey: "id"
+    })
   }
   return Item
 }

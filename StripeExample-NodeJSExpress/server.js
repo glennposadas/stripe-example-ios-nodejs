@@ -44,7 +44,7 @@ app.get("/", (req, res) => {
 
 const db = require("./app/models")
 
-db.sequelize.sync({ force: false }).then(() => {
+db.sequelize.sync({ force: true }).then(() => {
   console.log("Drop and re-sync db.")
   useRoutes()
 })
