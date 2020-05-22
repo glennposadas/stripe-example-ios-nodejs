@@ -36,6 +36,7 @@
 		4044812C24771FE800225603 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4044812A24771FE800225603 /* LaunchScreen.storyboard */; };
 		4044813724771FE800225603 /* StripeExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4044813624771FE800225603 /* StripeExampleTests.swift */; };
 		4044814224771FE800225603 /* StripeExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4044814124771FE800225603 /* StripeExampleUITests.swift */; };
+		40A6884A24787A3B0081A3D2 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A6884924787A3B0081A3D2 /* Item.swift */; };
 		40F6DB21247724FD004C8A1E /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F6DB20247724FD004C8A1E /* API.swift */; };
 		9562BD6215830A4A4D852FB5 /* Pods_StripeExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F5953D84ACF8F3F870A7332 /* Pods_StripeExample.framework */; };
 /* End PBXBuildFile section */
@@ -94,6 +95,7 @@
 		4044813D24771FE800225603 /* StripeExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StripeExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4044814124771FE800225603 /* StripeExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeExampleUITests.swift; sourceTree = "<group>"; };
 		4044814324771FE800225603 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		40A6884924787A3B0081A3D2 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		40F6DB20247724FD004C8A1E /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		7F5953D84ACF8F3F870A7332 /* Pods_StripeExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StripeExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AD71F205E75E6151EAC5C32 /* Pods-StripeExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StripeExample.debug.xcconfig"; path = "Target Support Files/Pods-StripeExample/Pods-StripeExample.debug.xcconfig"; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				403B20A72477AACB0037466F /* AuthModel.swift */,
+				40A6884924787A3B0081A3D2 /* Item.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				403356D72477A47200CE8BE8 /* RegisterViewController.swift in Sources */,
 				4044812024771FE600225603 /* AppDelegate.swift in Sources */,
 				403B209B2477AA200037466F /* ARSStatus.swift in Sources */,
+				40A6884A24787A3B0081A3D2 /* Item.swift in Sources */,
 				40F6DB21247724FD004C8A1E /* API.swift in Sources */,
 				403B20982477AA200037466F /* ARSLineProgress.swift in Sources */,
 				403B20A22477AA200037466F /* Defaults.swift in Sources */,

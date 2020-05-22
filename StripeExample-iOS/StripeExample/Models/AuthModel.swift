@@ -9,6 +9,6 @@
 import Foundation
 
 final class AuthModel: Codable {
-    let token: String = ""
+    let token: String
 }
 

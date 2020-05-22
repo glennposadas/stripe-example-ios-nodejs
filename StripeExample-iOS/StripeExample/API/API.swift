@@ -26,6 +26,7 @@ let API = MoyaProvider<AuthService>(
 enum AuthService {
     case loginWithEmail(email: String, password: String)
     case registerUser(email: String, password: String, name: String, address: String)
+    case getItems
 }
 
 // MARK: - TargetType Protocol Implementationm
@@ -39,6 +40,7 @@ extension AuthService: TargetType {
         switch self {
         case .loginWithEmail    : return "/oauth/signin"
         case .registerUser      : return "/oauth/signup"
+        case .getItems          : return "/items"
         }
     }
     
@@ -46,6 +48,7 @@ extension AuthService: TargetType {
         switch self {
         case .loginWithEmail    : return .post
         case .registerUser      : return .post
+        case .getItems          : return .get
         }
     }
     
@@ -60,7 +63,7 @@ extension AuthService: TargetType {
                     "password": password
                 ], encoding: URLEncoding.httpBody
             )
-
+            
         case let .registerUser(email, password, name, address):
             return .requestParameters(
                 parameters: [
@@ -70,11 +73,20 @@ extension AuthService: TargetType {
                     "address": address
                 ], encoding: URLEncoding.httpBody
             )
+            
+        case .getItems:
+            return .requestPlain
+            
         }
     }
     
     var headers: [String : String]? {
-        return nil
+        switch self {
+        case .getItems:
+            return CoreAPI.getHeaders()
+        default:
+            return nil
+        }
     }
 }
 
