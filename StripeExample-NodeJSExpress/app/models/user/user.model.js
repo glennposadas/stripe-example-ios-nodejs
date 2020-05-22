@@ -12,6 +12,21 @@ module.exports = (sequelize, DataTypes) => {
     
   });
 
+  User.prototype.validatePassword = function (password) {
+    return bcrypt.compare(password, this.password)
+  }
+
+  // Before create
+  User.beforeCreate((user, options) => {
+    return bcrypt.hash(user.password, 10)
+      .then(hash => {
+        user.password = hash;
+      })
+      .catch(err => {
+        throw new Error();
+      })
+  })
+
   // Association
   User.associate = function (models) {
     User.hasMany(models.Order, {
