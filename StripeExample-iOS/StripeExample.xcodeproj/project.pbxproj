@@ -28,6 +28,7 @@
 		403B20A02477AA200037466F /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403B208F2477AA200037466F /* UIViewExtension.swift */; };
 		403B20A12477AA200037466F /* ENVManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403B20902477AA200037466F /* ENVManager.swift */; };
 		403B20A22477AA200037466F /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403B20912477AA200037466F /* Defaults.swift */; };
+		403B20A82477AACB0037466F /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403B20A72477AACB0037466F /* AuthModel.swift */; };
 		4044812024771FE600225603 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4044811F24771FE600225603 /* AppDelegate.swift */; };
 		4044812224771FE600225603 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4044812124771FE600225603 /* SceneDelegate.swift */; };
 		4044812724771FE600225603 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4044812524771FE600225603 /* Main.storyboard */; };
@@ -79,6 +80,7 @@
 		403B208F2477AA200037466F /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		403B20902477AA200037466F /* ENVManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENVManager.swift; sourceTree = "<group>"; };
 		403B20912477AA200037466F /* Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
+		403B20A72477AACB0037466F /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
 		4044811C24771FE600225603 /* StripeExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StripeExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4044811F24771FE600225603 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4044812124771FE600225603 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -192,6 +194,14 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		403B20A62477AABE0037466F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				403B20A72477AACB0037466F /* AuthModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		4044811324771FE600225603 = {
 			isa = PBXGroup;
 			children = (
@@ -224,6 +234,7 @@
 				403B20A52477AA7D0037466F /* App */,
 				403B20A42477AA6E0037466F /* API */,
 				403B20A32477AA600037466F /* Controllers */,
+				403B20A62477AABE0037466F /* Models */,
 				403B207F2477AA200037466F /* Utilities */,
 			);
 			path = StripeExample;
@@ -434,6 +445,7 @@
 				403B209D2477AA200037466F /* ARSLineProgressProtocols.swift in Sources */,
 				403B20A02477AA200037466F /* UIViewExtension.swift in Sources */,
 				403B20922477AA200037466F /* UIButtonExtension.swift in Sources */,
+				403B20A82477AACB0037466F /* AuthModel.swift in Sources */,
 				403356D72477A47200CE8BE8 /* RegisterViewController.swift in Sources */,
 				4044812024771FE600225603 /* AppDelegate.swift in Sources */,
 				403B209B2477AA200037466F /* ARSStatus.swift in Sources */,

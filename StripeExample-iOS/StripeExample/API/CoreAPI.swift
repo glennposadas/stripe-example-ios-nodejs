@@ -50,7 +50,7 @@ class CoreAPI {
             "X-EMOJO-Country" : "PH",
             "User-Agent"    : "Emojo User App/\(Bundle.main.version) Build #\(Bundle.main.buildVersionNumber ?? "") (iOS/\(UIDevice.current.systemVersion)) CFNetwork/672.1.13",
             "X-EMOJO-Platform": "IOS",
-            "Authorization" : CoreService.getBearerToken() ?? ""
+            "Authorization" : CoreAPI.getBearerToken() ?? ""
         ]
     }
 }

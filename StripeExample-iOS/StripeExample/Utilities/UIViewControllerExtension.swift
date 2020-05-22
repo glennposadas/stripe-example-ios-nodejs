@@ -48,32 +48,6 @@ extension UIViewController {
         return controller
     }
     
-    // MARK: - Status Bar utilities
-    
-    /// Makes status bar visible.
-    public func showStatusBar() {
-        guard let baseVC = self as? BaseViewController else { return }
-        baseVC.statusBarIsHidden = false
-    }
-    
-    /// Makes status bar hidden.
-    public func hideStatusBar() {
-        guard let baseVC = self as? BaseViewController else { return }
-        baseVC.statusBarIsHidden = true
-    }
-    
-    /// Makes status bar go white.
-    public func makeStatusBarLight() {
-        guard let baseVC = self as? BaseViewController else { return }
-        baseVC.statusBarStyle = .lightContent
-    }
-    
-    /// Makes status bar go dark/black.
-    public func makeStatusBarDark() {
-        guard let baseVC = self as? BaseViewController else { return }
-        baseVC.statusBarStyle = .default
-    }
-    
     // MARK: - Navigations
     
     /// Shorter syntax for popping view controllers animated.

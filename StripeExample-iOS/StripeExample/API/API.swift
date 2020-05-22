@@ -25,8 +25,7 @@ let authServiceProvider = MoyaProvider<AuthService>(
 
 enum AuthService {
     case loginWithEmail(email: String, password: String)
-    case loginWithFacebook(token: String)
-    case registerUser(email: String, password: String)
+    case registerUser(email: String, password: String, name: String, address: String)
 }
 
 // MARK: - TargetType Protocol Implementationm
@@ -39,7 +38,6 @@ extension AuthService: TargetType {
     var path: String {
         switch self {
         case .loginWithEmail    : return "/oauth/signin"
-        case .loginWithFacebook : return "/oauth/facebook"
         case .registerUser      : return "/oauth/signup"
         }
     }
@@ -63,21 +61,16 @@ extension AuthService: TargetType {
                     "password": password
                 ], encoding: URLEncoding.httpBody
             )
-        case let .loginWithFacebook(token):
-            return .requestParameters(
-                parameters: [
-                    "access_token": token
-                ], encoding: JSONEncoding.default
-            )
-            
-        case let .registerUser(email, password):
+
+        case let .registerUser(email, password, name, address):
             return .requestParameters(
                 parameters: [
                     "email": email,
                     "password": password
+                    "name": name,
+                    "address": address
                 ], encoding: URLEncoding.httpBody
             )
-            
         }
     }
     
