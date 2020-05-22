@@ -68,7 +68,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="6g7-3f-NmY" id="XoS-DT-keQ"/>
                         <outlet property="passwordTextField" destination="AaX-Vw-v7m" id="gLQ-KA-rM9"/>
-                        <segue destination="bQl-zj-c5m" kind="presentation" identifier="showHome" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="XMO-0Q-vzf"/>
+                        <segue destination="de0-Ff-STo" kind="presentation" identifier="showHome" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="XMO-0Q-vzf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -157,7 +157,7 @@
                         <outlet property="emailTextField" destination="mOh-Iy-euB" id="dHU-ng-uen"/>
                         <outlet property="nameTextField" destination="fhX-WJ-vbJ" id="fmK-kD-EHb"/>
                         <outlet property="passwordTextField" destination="tVx-xo-jWO" id="6TI-Tp-B4W"/>
-                        <segue destination="bQl-zj-c5m" kind="presentation" identifier="showHome" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="PxE-UD-iDn"/>
+                        <segue destination="de0-Ff-STo" kind="presentation" identifier="showHome" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="PxE-UD-iDn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I4a-HT-np8" sceneMemberID="firstResponder"/>
@@ -178,7 +178,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mjo-DH-cdo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1206" y="903"/>
+            <point key="canvasLocation" x="1990" y="903"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="YCC-Du-yJ6">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="de0-Ff-STo" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zJN-ia-pP6">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="bQl-zj-c5m" kind="relationship" relationship="rootViewController" id="pPZ-Ay-Jgt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JuG-of-KYH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1205.7971014492755" y="902.67857142857133"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
