@@ -34,6 +34,9 @@
                                 <state key="normal" title="Login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="loginTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hYb-nJ-fbg"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z8o-1K-i7W">
                                 <rect key="frame" x="16" y="328" width="382" height="30"/>
@@ -63,6 +66,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Login" id="HFt-6t-78p"/>
                     <connections>
+                        <outlet property="emailTextField" destination="6g7-3f-NmY" id="XoS-DT-keQ"/>
+                        <outlet property="passwordTextField" destination="AaX-Vw-v7m" id="gLQ-KA-rM9"/>
                         <segue destination="bQl-zj-c5m" kind="presentation" identifier="showHome" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="XMO-0Q-vzf"/>
                     </connections>
                 </viewController>
@@ -130,6 +135,9 @@
                                 <state key="normal" title="Register">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="registerTapped:" destination="ncH-rN-s8F" eventType="touchUpInside" id="eCA-z3-hhc"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -145,6 +153,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="Register" id="xFK-cs-zDV"/>
                     <connections>
+                        <outlet property="addressTextField" destination="Qwg-CI-lDt" id="wrJ-60-XWl"/>
+                        <outlet property="emailTextField" destination="mOh-Iy-euB" id="dHU-ng-uen"/>
+                        <outlet property="nameTextField" destination="fhX-WJ-vbJ" id="fmK-kD-EHb"/>
+                        <outlet property="passwordTextField" destination="tVx-xo-jWO" id="6TI-Tp-B4W"/>
                         <segue destination="bQl-zj-c5m" kind="presentation" identifier="showHome" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="PxE-UD-iDn"/>
                     </connections>
                 </viewController>

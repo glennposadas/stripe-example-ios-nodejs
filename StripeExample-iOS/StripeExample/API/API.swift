@@ -9,7 +9,7 @@
 import Foundation
 import Moya
 
-let authServiceProvider = MoyaProvider<AuthService>(
+let API = MoyaProvider<AuthService>(
     plugins: [
         NetworkLoggerPlugin(
             configuration: .init(
@@ -45,7 +45,6 @@ extension AuthService: TargetType {
     var method: Moya.Method {
         switch self {
         case .loginWithEmail    : return .post
-        case .loginWithFacebook : return .post
         case .registerUser      : return .post
         }
     }
