@@ -65,7 +65,7 @@ extension AuthService: TargetType {
             return .requestParameters(
                 parameters: [
                     "email": email,
-                    "password": password
+                    "password": password,
                     "name": name,
                     "address": address
                 ], encoding: URLEncoding.httpBody

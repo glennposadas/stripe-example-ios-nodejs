@@ -43,7 +43,7 @@ class LoginViewController: UIViewController {
                 }
                 
                 self.alert(
-                    title: "Authentication was successful, but something wrong happened.",
+                    title: "Erorr logging in!",
                     okayButtonTitle: "OK",
                     withBlock: nil
                 )

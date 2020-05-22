@@ -136,7 +136,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="registerTapped:" destination="ncH-rN-s8F" eventType="touchUpInside" id="eCA-z3-hhc"/>
+                                    <action selector="loginTapped:" destination="ncH-rN-s8F" eventType="touchUpInside" id="fob-H0-1Ja"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -164,7 +164,7 @@
             </objects>
             <point key="canvasLocation" x="1654" y="138"/>
         </scene>
-        <!--Home View Controller-->
+        <!--Home-->
         <scene sceneID="oau-Wx-HQm">
             <objects>
                 <viewController storyboardIdentifier="HomeViewController" id="bQl-zj-c5m" customClass="HomeViewController" customModule="StripeExample" customModuleProvider="target" sceneMemberID="viewController">
@@ -174,7 +174,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="5se-Hh-TQv"/>
                     </view>
-                    <navigationItem key="navigationItem" id="q7G-tC-zJU"/>
+                    <navigationItem key="navigationItem" title="Home" id="q7G-tC-zJU"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mjo-DH-cdo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

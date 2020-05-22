@@ -26,11 +26,15 @@ class RegisterViewController: UIViewController {
         
         let email = self.emailTextField.text!
         let password = self.passwordTextField.text!
+        let name = self.nameTextField.text!
+        let address = self.addressTextField.text!
         
         API.request(
-            .loginWithEmail(
+            .registerUser(
                 email: email,
-                password: password
+                password: password,
+                name: name,
+                address: address
         )) { (result) in
             ARSLineProgress.hide()
             
@@ -43,7 +47,7 @@ class RegisterViewController: UIViewController {
                 }
                 
                 self.alert(
-                    title: "Registration was successful, but something wrong happened.",
+                    title: "Registration was unsuccessful!",
                     okayButtonTitle: "OK",
                     withBlock: nil
                 )
