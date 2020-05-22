@@ -164,17 +164,72 @@
             </objects>
             <point key="canvasLocation" x="1654" y="138"/>
         </scene>
-        <!--Home-->
+        <!--BUY MOVIE-->
         <scene sceneID="oau-Wx-HQm">
             <objects>
                 <viewController storyboardIdentifier="HomeViewController" id="bQl-zj-c5m" customClass="HomeViewController" customModule="StripeExample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="POW-02-fYf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lAw-Gi-Mqk">
+                                <rect key="frame" x="0.0" y="123" width="414" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="m9e-Kl-JCr"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="XVs-ty-gfN">
+                                <rect key="frame" x="16" y="297" width="382" height="49"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bed-Tg-Pl2">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t3r-Ob-PEP">
+                                        <rect key="frame" x="0.0" y="28.5" width="382" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PC1-GA-LgE">
+                                <rect key="frame" x="16" y="396" width="382" height="44"/>
+                                <color key="backgroundColor" red="0.0" green="0.34509803919999998" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="JPk-iA-8Dy"/>
+                                </constraints>
+                                <state key="normal" title="Purchase">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginTapped:" destination="ncH-rN-s8F" eventType="touchUpInside" id="nM7-wi-qus"/>
+                                    <action selector="purchaseTapped:" destination="bQl-zj-c5m" eventType="touchUpInside" id="xTQ-0t-rYQ"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="XVs-ty-gfN" firstAttribute="leading" secondItem="5se-Hh-TQv" secondAttribute="leading" constant="16" id="6fS-iu-3aj"/>
+                            <constraint firstItem="lAw-Gi-Mqk" firstAttribute="top" secondItem="5se-Hh-TQv" secondAttribute="top" constant="35" id="FJA-9d-jMK"/>
+                            <constraint firstItem="5se-Hh-TQv" firstAttribute="trailing" secondItem="XVs-ty-gfN" secondAttribute="trailing" constant="16" id="HX6-pj-P76"/>
+                            <constraint firstItem="PC1-GA-LgE" firstAttribute="top" secondItem="XVs-ty-gfN" secondAttribute="bottom" constant="50" id="P50-1S-z1a"/>
+                            <constraint firstItem="PC1-GA-LgE" firstAttribute="leading" secondItem="5se-Hh-TQv" secondAttribute="leading" constant="16" id="TIN-55-9xR"/>
+                            <constraint firstItem="5se-Hh-TQv" firstAttribute="trailing" secondItem="lAw-Gi-Mqk" secondAttribute="trailing" id="hG8-4h-FMR"/>
+                            <constraint firstItem="5se-Hh-TQv" firstAttribute="trailing" secondItem="PC1-GA-LgE" secondAttribute="trailing" constant="16" id="wOv-qp-piN"/>
+                            <constraint firstItem="XVs-ty-gfN" firstAttribute="top" secondItem="lAw-Gi-Mqk" secondAttribute="bottom" constant="24" id="xPf-Yb-OSm"/>
+                            <constraint firstItem="lAw-Gi-Mqk" firstAttribute="leading" secondItem="5se-Hh-TQv" secondAttribute="leading" id="yAT-6K-31i"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="5se-Hh-TQv"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Home" id="q7G-tC-zJU"/>
+                    <navigationItem key="navigationItem" title="BUY MOVIE" id="q7G-tC-zJU"/>
+                    <connections>
+                        <outlet property="bannerImageView" destination="lAw-Gi-Mqk" id="gRQ-Q9-LkD"/>
+                        <outlet property="descLabel" destination="t3r-Ob-PEP" id="1S3-7m-4ar"/>
+                        <outlet property="titleLabel" destination="bed-Tg-Pl2" id="Mlc-tk-aOM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mjo-DH-cdo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

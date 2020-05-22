@@ -7,5 +7,6 @@ target 'StripeExample' do
 
 pod 'Stripe'
 pod 'Moya'
+pod 'Kingfisher'
 
 end
