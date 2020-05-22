@@ -44,15 +44,15 @@ app.get("/", (req, res) => {
 
 const db = require("./app/models")
 
-db.sequelize.sync({ force: false }).then(() => {
+db.sequelize.sync({ force: true }).then(() => {
   console.log("Drop and re-sync db.")
   useRoutes()
 })
 
 function useRoutes() {
   console.log("Use routes...")
-  require("./app/routes/auth/auth.routes")(app)
-  require("./app/routes/user/user.routes")(app)
+  // require("./app/routes/auth/auth.routes")(app)
+  // require("./app/routes/user/user.routes")(app)
 }
 
 // set port, listen for requests

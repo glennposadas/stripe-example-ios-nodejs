@@ -4,7 +4,8 @@
   "description": "a research project for ios-nodejs stripe.",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "db:makemigrations": "./node_modules/sequelize-auto-migrations/bin/makemigration.js"
   },
   "repository": {
     "type": "git",
@@ -23,10 +24,12 @@
   "homepage": "https://github.com/glennposadas/stripe-example-ios-nodejs#readme",
   "dependencies": {
     "async": "^3.2.0",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "glob": "^7.1.6",
     "helmet": "^3.22.0",
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
@@ -35,6 +38,7 @@
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
     "sequelize": "^5.21.10",
+    "sequelize-auto-migrations": "github:scimonster/sequelize-auto-migrations#a063aa6535a3f580623581bf866cef2d609531ba",
     "sequelize-cli": "^5.5.1",
     "stripe": "^8.54.0"
   },
