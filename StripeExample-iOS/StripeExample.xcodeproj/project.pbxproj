@@ -7,9 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		403356D52477A46800CE8BE8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403356D42477A46800CE8BE8 /* LoginViewController.swift */; };
+		403356D72477A47200CE8BE8 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403356D62477A47200CE8BE8 /* RegisterViewController.swift */; };
+		403356D92477A47900CE8BE8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403356D82477A47900CE8BE8 /* HomeViewController.swift */; };
+		403356DB2477A9A900CE8BE8 /* CoreAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403356DA2477A9A900CE8BE8 /* CoreAPI.swift */; };
+		403B20922477AA200037466F /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403B20802477AA200037466F /* UIButtonExtension.swift */; };
+		403B20932477AA200037466F /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403B20812477AA200037466F /* UIColorExtension.swift */; };
+		403B20942477AA200037466F /* ARSLineProgressHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403B20832477AA200037466F /* ARSLineProgressHelpers.swift */; };
+		403B20952477AA200037466F /* ARSLineProgressTypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403B20842477AA200037466F /* ARSLineProgressTypeAliases.swift */; };
+		403B20962477AA200037466F /* ARSInfiniteLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403B20852477AA200037466F /* ARSInfiniteLoader.swift */; };
+		403B20972477AA200037466F /* ARSLineProgressConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403B20862477AA200037466F /* ARSLineProgressConstants.swift */; };
+		403B20982477AA200037466F /* ARSLineProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403B20872477AA200037466F /* ARSLineProgress.swift */; };
+		403B20992477AA200037466F /* ARSLineProgressExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403B20882477AA200037466F /* ARSLineProgressExtensions.swift */; };
+		403B209A2477AA200037466F /* ARSLineProgressCustomization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403B20892477AA200037466F /* ARSLineProgressCustomization.swift */; };
+		403B209B2477AA200037466F /* ARSStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403B208A2477AA200037466F /* ARSStatus.swift */; };
+		403B209C2477AA200037466F /* ARSProgressLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403B208B2477AA200037466F /* ARSProgressLoader.swift */; };
+		403B209D2477AA200037466F /* ARSLineProgressProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403B208C2477AA200037466F /* ARSLineProgressProtocols.swift */; };
+		403B209E2477AA200037466F /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403B208D2477AA200037466F /* UIViewControllerExtension.swift */; };
+		403B209F2477AA200037466F /* BundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403B208E2477AA200037466F /* BundleExtension.swift */; };
+		403B20A02477AA200037466F /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403B208F2477AA200037466F /* UIViewExtension.swift */; };
+		403B20A12477AA200037466F /* ENVManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403B20902477AA200037466F /* ENVManager.swift */; };
+		403B20A22477AA200037466F /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403B20912477AA200037466F /* Defaults.swift */; };
 		4044812024771FE600225603 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4044811F24771FE600225603 /* AppDelegate.swift */; };
 		4044812224771FE600225603 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4044812124771FE600225603 /* SceneDelegate.swift */; };
-		4044812424771FE600225603 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4044812324771FE600225603 /* ViewController.swift */; };
 		4044812724771FE600225603 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4044812524771FE600225603 /* Main.storyboard */; };
 		4044812924771FE800225603 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4044812824771FE800225603 /* Assets.xcassets */; };
 		4044812C24771FE800225603 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4044812A24771FE800225603 /* LaunchScreen.storyboard */; };
@@ -38,10 +58,30 @@
 
 /* Begin PBXFileReference section */
 		0A7B81C4BA6D08896275C639 /* Pods-StripeExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StripeExample.release.xcconfig"; path = "Target Support Files/Pods-StripeExample/Pods-StripeExample.release.xcconfig"; sourceTree = "<group>"; };
+		403356D42477A46800CE8BE8 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		403356D62477A47200CE8BE8 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		403356D82477A47900CE8BE8 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		403356DA2477A9A900CE8BE8 /* CoreAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreAPI.swift; sourceTree = "<group>"; };
+		403B20802477AA200037466F /* UIButtonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
+		403B20812477AA200037466F /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		403B20832477AA200037466F /* ARSLineProgressHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARSLineProgressHelpers.swift; sourceTree = "<group>"; };
+		403B20842477AA200037466F /* ARSLineProgressTypeAliases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARSLineProgressTypeAliases.swift; sourceTree = "<group>"; };
+		403B20852477AA200037466F /* ARSInfiniteLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARSInfiniteLoader.swift; sourceTree = "<group>"; };
+		403B20862477AA200037466F /* ARSLineProgressConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARSLineProgressConstants.swift; sourceTree = "<group>"; };
+		403B20872477AA200037466F /* ARSLineProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARSLineProgress.swift; sourceTree = "<group>"; };
+		403B20882477AA200037466F /* ARSLineProgressExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARSLineProgressExtensions.swift; sourceTree = "<group>"; };
+		403B20892477AA200037466F /* ARSLineProgressCustomization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARSLineProgressCustomization.swift; sourceTree = "<group>"; };
+		403B208A2477AA200037466F /* ARSStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARSStatus.swift; sourceTree = "<group>"; };
+		403B208B2477AA200037466F /* ARSProgressLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARSProgressLoader.swift; sourceTree = "<group>"; };
+		403B208C2477AA200037466F /* ARSLineProgressProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARSLineProgressProtocols.swift; sourceTree = "<group>"; };
+		403B208D2477AA200037466F /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		403B208E2477AA200037466F /* BundleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BundleExtension.swift; sourceTree = "<group>"; };
+		403B208F2477AA200037466F /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		403B20902477AA200037466F /* ENVManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENVManager.swift; sourceTree = "<group>"; };
+		403B20912477AA200037466F /* Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		4044811C24771FE600225603 /* StripeExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StripeExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4044811F24771FE600225603 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4044812124771FE600225603 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4044812324771FE600225603 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4044812624771FE600225603 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4044812824771FE800225603 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4044812B24771FE800225603 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -92,6 +132,66 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		403B207F2477AA200037466F /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				403B20802477AA200037466F /* UIButtonExtension.swift */,
+				403B20812477AA200037466F /* UIColorExtension.swift */,
+				403B20822477AA200037466F /* ARSLineProgress */,
+				403B208D2477AA200037466F /* UIViewControllerExtension.swift */,
+				403B208E2477AA200037466F /* BundleExtension.swift */,
+				403B208F2477AA200037466F /* UIViewExtension.swift */,
+				403B20902477AA200037466F /* ENVManager.swift */,
+				403B20912477AA200037466F /* Defaults.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		403B20822477AA200037466F /* ARSLineProgress */ = {
+			isa = PBXGroup;
+			children = (
+				403B20832477AA200037466F /* ARSLineProgressHelpers.swift */,
+				403B20842477AA200037466F /* ARSLineProgressTypeAliases.swift */,
+				403B20852477AA200037466F /* ARSInfiniteLoader.swift */,
+				403B20862477AA200037466F /* ARSLineProgressConstants.swift */,
+				403B20872477AA200037466F /* ARSLineProgress.swift */,
+				403B20882477AA200037466F /* ARSLineProgressExtensions.swift */,
+				403B20892477AA200037466F /* ARSLineProgressCustomization.swift */,
+				403B208A2477AA200037466F /* ARSStatus.swift */,
+				403B208B2477AA200037466F /* ARSProgressLoader.swift */,
+				403B208C2477AA200037466F /* ARSLineProgressProtocols.swift */,
+			);
+			path = ARSLineProgress;
+			sourceTree = "<group>";
+		};
+		403B20A32477AA600037466F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				403356D42477A46800CE8BE8 /* LoginViewController.swift */,
+				403356D62477A47200CE8BE8 /* RegisterViewController.swift */,
+				403356D82477A47900CE8BE8 /* HomeViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		403B20A42477AA6E0037466F /* API */ = {
+			isa = PBXGroup;
+			children = (
+				40F6DB20247724FD004C8A1E /* API.swift */,
+				403356DA2477A9A900CE8BE8 /* CoreAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		403B20A52477AA7D0037466F /* App */ = {
+			isa = PBXGroup;
+			children = (
+				4044811F24771FE600225603 /* AppDelegate.swift */,
+				4044812124771FE600225603 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		4044811324771FE600225603 = {
 			isa = PBXGroup;
 			children = (
@@ -117,14 +217,14 @@
 		4044811E24771FE600225603 /* StripeExample */ = {
 			isa = PBXGroup;
 			children = (
-				4044811F24771FE600225603 /* AppDelegate.swift */,
-				4044812124771FE600225603 /* SceneDelegate.swift */,
-				4044812324771FE600225603 /* ViewController.swift */,
 				4044812524771FE600225603 /* Main.storyboard */,
 				4044812824771FE800225603 /* Assets.xcassets */,
 				4044812A24771FE800225603 /* LaunchScreen.storyboard */,
 				4044812D24771FE800225603 /* Info.plist */,
-				40F6DB20247724FD004C8A1E /* API.swift */,
+				403B20A52477AA7D0037466F /* App */,
+				403B20A42477AA6E0037466F /* API */,
+				403B20A32477AA600037466F /* Controllers */,
+				403B207F2477AA200037466F /* Utilities */,
 			);
 			path = StripeExample;
 			sourceTree = "<group>";
@@ -330,10 +430,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4044812424771FE600225603 /* ViewController.swift in Sources */,
+				403356D52477A46800CE8BE8 /* LoginViewController.swift in Sources */,
+				403B209D2477AA200037466F /* ARSLineProgressProtocols.swift in Sources */,
+				403B20A02477AA200037466F /* UIViewExtension.swift in Sources */,
+				403B20922477AA200037466F /* UIButtonExtension.swift in Sources */,
+				403356D72477A47200CE8BE8 /* RegisterViewController.swift in Sources */,
 				4044812024771FE600225603 /* AppDelegate.swift in Sources */,
+				403B209B2477AA200037466F /* ARSStatus.swift in Sources */,
 				40F6DB21247724FD004C8A1E /* API.swift in Sources */,
+				403B20982477AA200037466F /* ARSLineProgress.swift in Sources */,
+				403B20A22477AA200037466F /* Defaults.swift in Sources */,
+				403B20962477AA200037466F /* ARSInfiniteLoader.swift in Sources */,
+				403B20942477AA200037466F /* ARSLineProgressHelpers.swift in Sources */,
+				403B20952477AA200037466F /* ARSLineProgressTypeAliases.swift in Sources */,
+				403B20992477AA200037466F /* ARSLineProgressExtensions.swift in Sources */,
+				403B209E2477AA200037466F /* UIViewControllerExtension.swift in Sources */,
+				403B20932477AA200037466F /* UIColorExtension.swift in Sources */,
+				403B20972477AA200037466F /* ARSLineProgressConstants.swift in Sources */,
+				403B20A12477AA200037466F /* ENVManager.swift in Sources */,
+				403356DB2477A9A900CE8BE8 /* CoreAPI.swift in Sources */,
+				403B209A2477AA200037466F /* ARSLineProgressCustomization.swift in Sources */,
+				403B209F2477AA200037466F /* BundleExtension.swift in Sources */,
 				4044812224771FE600225603 /* SceneDelegate.swift in Sources */,
+				403B209C2477AA200037466F /* ARSProgressLoader.swift in Sources */,
+				403356D92477A47900CE8BE8 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
