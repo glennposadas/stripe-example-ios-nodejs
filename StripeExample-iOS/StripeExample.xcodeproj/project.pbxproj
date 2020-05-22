@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,7 @@
 		4044812C24771FE800225603 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4044812A24771FE800225603 /* LaunchScreen.storyboard */; };
 		4044813724771FE800225603 /* StripeExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4044813624771FE800225603 /* StripeExampleTests.swift */; };
 		4044814224771FE800225603 /* StripeExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4044814124771FE800225603 /* StripeExampleUITests.swift */; };
+		40F6DB21247724FD004C8A1E /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F6DB20247724FD004C8A1E /* API.swift */; };
 		9562BD6215830A4A4D852FB5 /* Pods_StripeExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F5953D84ACF8F3F870A7332 /* Pods_StripeExample.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +52,7 @@
 		4044813D24771FE800225603 /* StripeExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StripeExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4044814124771FE800225603 /* StripeExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeExampleUITests.swift; sourceTree = "<group>"; };
 		4044814324771FE800225603 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		40F6DB20247724FD004C8A1E /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		7F5953D84ACF8F3F870A7332 /* Pods_StripeExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StripeExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AD71F205E75E6151EAC5C32 /* Pods-StripeExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StripeExample.debug.xcconfig"; path = "Target Support Files/Pods-StripeExample/Pods-StripeExample.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,7 +89,6 @@
 				9AD71F205E75E6151EAC5C32 /* Pods-StripeExample.debug.xcconfig */,
 				0A7B81C4BA6D08896275C639 /* Pods-StripeExample.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -123,6 +124,7 @@
 				4044812824771FE800225603 /* Assets.xcassets */,
 				4044812A24771FE800225603 /* LaunchScreen.storyboard */,
 				4044812D24771FE800225603 /* Info.plist */,
+				40F6DB20247724FD004C8A1E /* API.swift */,
 			);
 			path = StripeExample;
 			sourceTree = "<group>";
@@ -330,6 +332,7 @@
 			files = (
 				4044812424771FE600225603 /* ViewController.swift in Sources */,
 				4044812024771FE600225603 /* AppDelegate.swift in Sources */,
+				40F6DB21247724FD004C8A1E /* API.swift in Sources */,
 				4044812224771FE600225603 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
