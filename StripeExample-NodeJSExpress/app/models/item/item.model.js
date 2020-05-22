@@ -6,7 +6,8 @@ module.exports = (sequelize, DataTypes) => {
     id: { type: DataTypes.INTEGER, allowNull: false, autoIncrement: true, unique: true, primaryKey: true },
     title: DataTypes.STRING,
     description: DataTypes.STRING,
-    price: DataTypes.FLOAT
+    price: DataTypes.FLOAT,
+    photoURL: DataTypes.STRING
   }, {
     
   });

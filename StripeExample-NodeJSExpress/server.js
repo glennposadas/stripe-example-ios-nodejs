@@ -53,6 +53,7 @@ function useRoutes() {
   console.log("Use routes...")
   require("./app/routes/auth/auth.routes")(app)
   require("./app/routes/order/order.routes")(app)
+  require("./app/routes/item/item.routes")(app)
 }
 
 // set port, listen for requests
