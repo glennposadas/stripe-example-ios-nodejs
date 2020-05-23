@@ -3,8 +3,10 @@ const express = require("express")
 const router = express.Router()
 const util = require("util")
 
-const config = require("../../config/config");
-const jwt = require('jsonwebtoken');
+const config = require("../../config/config")
+const jwt = require('jsonwebtoken')
+
+const stripe = require('stripe')('sk_test_...')
 
 signToken = user => {
   return jwt.sign({
@@ -40,29 +42,51 @@ module.exports = {
           })
         }
 
-        const newUser = {
+        stripe.customers.create({
           email: email,
-          name: name,
-          address: address,
-          photoUrl: null,
-          password: password
-        }
+        })
+          .then(customer => {
+            console.log("Stripe ID -> " + customer.id)
 
-        db.User.create(newUser)
-        .then(data => {
-          console.log("Created new user! ✅")
-          // Generate the token
-          const token = signToken(newUser)
-          // Respond with token
-          res.status(200).json({ token })
-        })
-        .catch(err => {
-          console.log("Error creating a new user with email!!!." + err)
-          return res.status(409).send({
-            message: "An error has occured while creating a new user with email."
+            // Create now a new user in the db...
+            const newUser = {
+              email: email,
+              name: name,
+              address: address,
+              photoUrl: null,
+              password: password,
+              paymentDetails: {
+                stripeId: customer.id
+              }
+            }
+
+            db.User.create({
+              newUser,
+              include: [{
+                association: User.UserPaymentDetails
+              }]
+            })
+              .then(data => {
+                console.log("Created new user! ✅")
+                // Generate the token
+                const token = signToken(newUser)
+                // Respond with token
+                res.status(200).json({ token })
+              })
+              .catch(err => {
+                console.log("Error creating a new user with email!!!." + err)
+                return res.status(409).send({
+                  message: "An error has occured while creating a new user with email."
+                })
+              })
+
           })
-        })
-        
+          .catch(err => {
+            console.error(err)
+            return res.status(409).send({
+              message: "An error has occured while creating a new user's stripe data."
+            })
+          })
       })
       .catch(err => {
         console.log(err)
