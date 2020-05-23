@@ -9,7 +9,7 @@ module.exports = app => {
   const config = require("../../config/config")
 
   // GET: all items without pagination
-  router.get("/", passportJWT, controller.getAllItems)
+  router.get("/", controller.getAllItems)
 
   app.use("/api/items", router)
 }

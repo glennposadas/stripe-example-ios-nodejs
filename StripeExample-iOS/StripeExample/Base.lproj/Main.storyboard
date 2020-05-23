@@ -228,6 +228,7 @@
                     <connections>
                         <outlet property="bannerImageView" destination="lAw-Gi-Mqk" id="gRQ-Q9-LkD"/>
                         <outlet property="descLabel" destination="t3r-Ob-PEP" id="1S3-7m-4ar"/>
+                        <outlet property="purchaseButton" destination="PC1-GA-LgE" id="eKe-EK-NAJ"/>
                         <outlet property="titleLabel" destination="bed-Tg-Pl2" id="Mlc-tk-aOM"/>
                     </connections>
                 </viewController>

@@ -16,10 +16,12 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let token = AppDefaults.getObjectWithKey(.authModel, type: AuthModel.self)?.token,
-            !token.isEmpty {
-            self.startFlow()
-        }
+//        if let token = AppDefaults.getObjectWithKey(.authModel, type: AuthModel.self)?.token,
+//            !token.isEmpty {
+//            self.startFlow()
+//        }
+        
+        self.startFlow()
     }
     
     @IBAction func loginTapped(_ sender: Any) {

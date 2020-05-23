@@ -15,14 +15,19 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var bannerImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descLabel: UILabel!
+    @IBOutlet weak var purchaseButton: UIButton!
     
     var paymentContext: STPPaymentContext!
+    
+    private var item: Item!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.purchaseButton.isEnabled = false
+        self.purchaseButton.backgroundColor = .gray
+        
         self.loadData()
-        self.setupPayment()
     }
     
     private func setupPayment() {
@@ -35,6 +40,21 @@ class HomeViewController: UIViewController {
         config.additionalPaymentOptions = .applePay
         
         let customerContext = STPCustomerContext(keyProvider: API.shared)
+        let paymentContext = STPPaymentContext(
+            customerContext: customerContext,
+            configuration: config,
+            theme: STPTheme.default()
+        )
+        
+        let userInformation = STPUserInformation()
+        paymentContext.prefilledInformation = userInformation
+        paymentContext.paymentAmount = Int(item.price) * 100 //$9.99 * 100 cents
+        paymentContext.paymentCurrency = "usd"
+        
+        self.paymentContext = paymentContext
+        
+        self.paymentContext.delegate = self
+        self.paymentContext.hostViewController = self
     }
     
     private func loadData() {
@@ -72,9 +92,14 @@ class HomeViewController: UIViewController {
         
         let resource = ImageResource(downloadURL: url)
         
+        self.item = item
+        
         self.titleLabel.text = item.title
         self.descLabel.text = item.descriptionField
         self.bannerImageView.kf.setImage(with: resource)
+        self.purchaseButton.setTitle("Purchase: $\(String(format:"%.2f", item.price))", for: .normal)
+        
+        self.setupPayment()
     }
     
     @IBAction func purchaseTapped(_ sender: Any) {
@@ -82,23 +107,116 @@ class HomeViewController: UIViewController {
     }
     
     private func startPaymentFlow() {
-        let config = STPPaymentConfiguration()
-        config.additionalPaymentOptions = .default
-        config.requiredBillingAddressFields = .none
-        config.appleMerchantIdentifier = "dummy-merchant-id"
+        if let paymentOption = paymentContext.selectedPaymentOption, HomeViewController.readyForPayment > 2  {
+            self.paymentContext.requestPayment()
+            return
+        }
         
-        let paymentOptiosnController = STPPaymentOptionsViewController(
-            configuration: config,
-            theme: STPTheme.default(),
-            customerContext: MockCustomerContext(),
-            delegate: self
-        )
-        paymentOptiosnController.apiClient = MockAPIClient()
+        self.paymentContext.pushPaymentOptionsViewController()
+    }
+}
+
+// MARK: - STPPaymentContextDelegate
+
+extension HomeViewController: STPPaymentContextDelegate {
+    static var readyForPayment = 0
+    func paymentContextDidChange(_ paymentContext: STPPaymentContext) {
+//                self.paymentRow.loading = paymentContext.loading
+//        if let paymentOption = paymentContext.selectedPaymentOption {
+//            self.paymentRow.detail = paymentOption.label
+//        } else {
+//            self.paymentRow.detail = "Select Payment"
+//        }
+//        if let shippingMethod = paymentContext.selectedShippingMethod {
+//            self.shippingRow?.detail = shippingMethod.label
+//        } else {
+//            self.shippingRow?.detail = "Select address"
+//        }
         
-        let navigationController = UINavigationController(rootViewController: paymentOptiosnController)
-        navigationController.navigationBar.stp_theme = STPTheme.default()
+        var localeComponents: [String: String] = [
+            NSLocale.Key.currencyCode.rawValue: "usd",
+        ]
+        localeComponents[NSLocale.Key.languageCode.rawValue] = NSLocale.preferredLanguages.first
+        let localeID = NSLocale.localeIdentifier(fromComponents: localeComponents)
+        let locale: Locale = Locale(identifier: localeID)
+
         
-        self.present(navigationController, animated: true, completion: nil)
+        let numberFormatter = NumberFormatter()
+        numberFormatter.locale = locale
+        numberFormatter.numberStyle = .currency
+        numberFormatter.usesGroupingSeparator = true
+
+        print("CONTEXT DID CHANGE: \(numberFormatter.string(from: NSNumber(value: Float(self.paymentContext.paymentAmount)/100))!)")
+        self.purchaseButton.isEnabled = paymentContext.selectedPaymentOption != nil
+        self.purchaseButton.backgroundColor = self.purchaseButton.isEnabled ? UIColor.colorWithRGBHex(0x00589C) : .gray
+        
+        //HomeViewController.readyForPayment = true
+        // this is the dirtiest hack i've ever created.
+        HomeViewController.readyForPayment += 1
+        
+        if HomeViewController.readyForPayment > 2 {
+            self.purchaseButton.setTitle("PAY NOW", for: .normal)
+        }
+        
+        print("-----> \(HomeViewController.readyForPayment)")
+    }
+    
+    func paymentContext(_ paymentContext: STPPaymentContext, didFailToLoadWithError error: Error) {
+        self.alert(title: "ERROR: \(error.localizedDescription)", okayButtonTitle: "OK", withBlock: nil)
+    }
+    
+    func paymentContext(_ paymentContext: STPPaymentContext, didCreatePaymentResult paymentResult: STPPaymentResult, completion: @escaping STPPaymentStatusBlock) {
+        // Create the PaymentIntent on the backend
+        // To speed this up, create the PaymentIntent earlier in the checkout flow and update it as necessary (e.g. when the cart subtotal updates or when shipping fees and taxes are calculated, instead of re-creating a PaymentIntent for every payment attempt.
+        API.shared.createPaymentIntent(for: self.item) { (result) in
+            switch result {
+            case .success(let clientSecret):
+                // Confirm the PaymentIntent
+                let paymentIntentParams = STPPaymentIntentParams(clientSecret: clientSecret)
+                paymentIntentParams.configure(with: paymentResult)
+                paymentIntentParams.returnURL = "payments-example://stripe-redirect"
+                STPPaymentHandler.shared().confirmPayment(withParams: paymentIntentParams, authenticationContext: paymentContext) { status, paymentIntent, error in
+                    switch status {
+                    case .succeeded:
+                        // Our example backend asynchronously fulfills the customer's order via webhook
+                        // See https://stripe.com/docs/payments/payment-intents/ios#fulfillment
+                        completion(.success, nil)
+                    case .failed:
+                        completion(.error, error)
+                    case .canceled:
+                        completion(.userCancellation, nil)
+                    @unknown default:
+                        completion(.error, nil)
+                    }
+                }
+            case .failure(let error):
+                // A real app should retry this request if it was a network error.
+                print("Failed to create a Payment Intent: \(error)")
+                completion(.error, error)
+                break
+            }
+        }
+    }
+    
+    func paymentContext(_ paymentContext: STPPaymentContext, didFinishWith status: STPPaymentStatus, error: Error?) {
+        let title: String
+        let message: String
+        switch status {
+        case .error:
+            title = "Error"
+            message = error?.localizedDescription ?? ""
+        case .success:
+            title = "Success"
+            message = "Your purchase was successful!"
+        case .userCancellation:
+            return()
+        @unknown default:
+            return()
+        }
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(action)
+        self.present(alertController, animated: true, completion: nil)
     }
 }
 
@@ -184,14 +302,14 @@ class MockCustomer: STPCustomer {
     var mockPaymentMethods: [STPPaymentMethod] = []
     var mockDefaultPaymentMethod: STPPaymentMethod? = nil
     var mockShippingAddress: STPAddress?
-
+    
     override init() {
         /**
          Preload the mock customer with saved cards.
          last4 values are from test cards: https://stripe.com/docs/testing#cards
          Not using the "4242" and "4444" numbers, since those are the easiest
          to remember and fill.
-        */
+         */
         let visa = [
             "card": [
                 "id": "preloaded_visa",
@@ -235,7 +353,7 @@ class MockCustomer: STPCustomer {
             mockPaymentMethods.append(card)
         }
     }
-
+    
     var paymentMethods: [STPPaymentMethod] {
         get {
             return mockPaymentMethods
@@ -244,7 +362,7 @@ class MockCustomer: STPCustomer {
             mockPaymentMethods = newValue
         }
     }
-
+    
     var defaultPaymentMethod: STPPaymentMethod? {
         get {
             return mockDefaultPaymentMethod
@@ -253,7 +371,7 @@ class MockCustomer: STPCustomer {
             mockDefaultPaymentMethod = newValue
         }
     }
-
+    
     override var shippingAddress: STPAddress? {
         get {
             return mockShippingAddress
@@ -265,9 +383,9 @@ class MockCustomer: STPCustomer {
 }
 
 class MockCustomerContext: STPCustomerContext {
-
+    
     let customer = MockCustomer()
-
+    
     override func retrieveCustomer(_ completion: STPCustomerCompletionBlock? = nil) {
         if let completion = completion {
             completion(customer, nil)
@@ -280,7 +398,7 @@ class MockCustomerContext: STPCustomerContext {
             completion(nil)
         }
     }
-
+    
     override func detachPaymentMethod(fromCustomer paymentMethod: STPPaymentMethod, completion: STPErrorBlock? = nil) {
         if let index = customer.paymentMethods.firstIndex(where: { $0.stripeId == paymentMethod.stripeId }) {
             customer.paymentMethods.remove(at: index)
@@ -302,12 +420,12 @@ class MockCustomerContext: STPCustomerContext {
         }
         completion(nil)
     }
-
+    
     override func updateCustomer(withShippingAddress shipping: STPAddress, completion: STPErrorBlock?) {
         customer.shippingAddress = shipping
         if let completion = completion {
             completion(nil)
         }
     }
-
+    
 }

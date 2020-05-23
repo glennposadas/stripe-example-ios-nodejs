@@ -34,7 +34,11 @@ class API: NSObject {
         case createPaymentIntent(allParams: [String : Any])
         
         var baseURL: URL {
-            return URL(string: baseURLString)!
+            switch self {
+            case .getItems:
+                return URL(string: baseURLString)!
+            default: return URL(string: "https://stripe-ruby-example.herokuapp.com")!
+            }
         }
         
         var path: String {
@@ -90,7 +94,9 @@ class API: NSObject {
                 )
                 
             case let .createPaymentIntent(allParams):
-                return .requestParameters(parameters: allParams, encoding: JSONEncoding.default)
+                let jsonData = try? JSONSerialization.data(withJSONObject: allParams)
+                return .requestCompositeData(bodyData: jsonData!, urlParameters: [:])
+                //return .requestParameters(parameters: allParams, encoding: JSONEncoding.default)
             }
         }
         
@@ -116,8 +122,8 @@ extension API: STPCustomerEphemeralKeyProvider {
             ],
         ]
         
-        allParams["products"] = item.title
-        allParams["country"] = "Philippines"
+        allParams["products"] = [item.title]
+        allParams["country"] = "us"
         
         API.provider.request(.createPaymentIntent(allParams: allParams)) { (result) in
             switch result {
@@ -136,6 +142,10 @@ extension API: STPCustomerEphemeralKeyProvider {
 
         }
     }
+    
+    //  - some : "{\"country\":\"us\",\"metadata\":{\"payment_request_id\":\"B3E611D1-5FA1-4410-9CEC-00958A5126CB\"},\"products\":[\"3 Idiots (2009)\"]}"
+//   - some : "{\"country\":\"us\",\"metadata\":{\"payment_request_id\":\"B3E611D1-5FA1-4410-9CEC-00958A5126CB\"},\"products\":[\"👗\"]}"
+
     
     /// The actual protocol of `STPCustomerEphemeralKeyProvider`.
     func createCustomerKey(withAPIVersion apiVersion: String, completion: @escaping STPJSONResponseCompletionBlock) {
