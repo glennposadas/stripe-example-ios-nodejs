@@ -11,7 +11,10 @@ module.exports = (sequelize, DataTypes) => {
 
   // Association
   UserPaymentDetails.associate = function (models) {
-    UserPaymentDetails.belongsTo(models.User)
+    UserPaymentDetails.belongsTo(models.User, {
+      foreignKey: "userId", 
+      targetKey: "id"
+    })
   }
   return UserPaymentDetails
 }

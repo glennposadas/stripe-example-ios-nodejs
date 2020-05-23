@@ -252,17 +252,6 @@
                     "onUpdate": "CASCADE",
                     "field": "userId",
                     "seqType": "Sequelize.BIGINT"
-                },
-                "UserId": {
-                    "allowNull": true,
-                    "references": {
-                        "model": "Users",
-                        "key": "id"
-                    },
-                    "onDelete": "SET NULL",
-                    "onUpdate": "CASCADE",
-                    "field": "UserId",
-                    "seqType": "Sequelize.BIGINT"
                 }
             },
             "indexes": []

@@ -10,14 +10,14 @@ var Sequelize = require('sequelize');
  * createTable "Orders", deps: [Users]
  * createTable "OrderDetails", deps: [Items, Orders]
  * createTable "OrderPayments", deps: [Orders]
- * createTable "UserPaymentDetails", deps: [Users, Users]
+ * createTable "UserPaymentDetails", deps: [Users]
  *
  **/
 
 var info = {
     "revision": 1,
     "name": "mega-migration",
-    "created": "2020-05-23T12:18:52.444Z",
+    "created": "2020-05-23T12:34:03.716Z",
     "comment": ""
 };
 
@@ -294,17 +294,6 @@ var migrationCommands = function(transaction) {
                     "userId": {
                         "type": Sequelize.BIGINT,
                         "field": "userId",
-                        "onUpdate": "CASCADE",
-                        "onDelete": "SET NULL",
-                        "references": {
-                            "model": "Users",
-                            "key": "id"
-                        },
-                        "allowNull": true
-                    },
-                    "UserId": {
-                        "type": Sequelize.BIGINT,
-                        "field": "UserId",
                         "onUpdate": "CASCADE",
                         "onDelete": "SET NULL",
                         "references": {
