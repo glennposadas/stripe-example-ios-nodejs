@@ -46,6 +46,11 @@ class CoreAPI {
     /// Generates required headers for all API endpoints.
     class func getHeaders() -> [String : String] {
         return [
+            "Content-type"  : "application/json",
+            "X-EMOJO-Country" : "PH",
+            "User-Agent"    : "Emojo User App/\(Bundle.main.version) Build #\(Bundle.main.buildVersionNumber ?? "") (iOS/\(UIDevice.current.systemVersion)) CFNetwork/672.1.13",
+            "X-EMOJO-Platform": "IOS",
+            
             "Authorization" : CoreAPI.getBearerToken() ?? ""
         ]
     }

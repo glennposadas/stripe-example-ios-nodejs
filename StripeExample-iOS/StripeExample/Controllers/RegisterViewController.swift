@@ -29,7 +29,7 @@ class RegisterViewController: UIViewController {
         let name = self.nameTextField.text!
         let address = self.addressTextField.text!
         
-        API.request(
+        API.provider.request(
             .registerUser(
                 email: email,
                 password: password,

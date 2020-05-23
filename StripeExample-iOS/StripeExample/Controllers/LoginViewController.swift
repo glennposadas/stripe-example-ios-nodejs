@@ -30,7 +30,7 @@ class LoginViewController: UIViewController {
         
         print("Email: \(email) | Password: \(password)")
         
-        API.request(
+        API.provider.request(
             .loginWithEmail(
                 email: email,
                 password: password

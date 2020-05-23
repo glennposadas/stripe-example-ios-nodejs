@@ -16,7 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         Stripe.setDefaultPublishableKey("pk_test_OvOsDyffiU9VtZdr55icDUfN00UGpshGSj")
-
         
         return true
     }
