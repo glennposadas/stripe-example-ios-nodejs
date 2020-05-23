@@ -34,7 +34,7 @@ class HomeViewController: UIViewController {
         //config.shippingType = settings.shippingType
         config.additionalPaymentOptions = .applePay
         
-        let customerContext = STPCustomerContext(keyProvider: AuthService)
+        let customerContext = STPCustomerContext(keyProvider: API.shared)
     }
     
     private func loadData() {

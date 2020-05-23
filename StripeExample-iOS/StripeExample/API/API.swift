@@ -24,10 +24,14 @@ class API: NSObject {
         ]
     )
     
+    static let shared = API()
+    
     enum AuthService: TargetType {
         case loginWithEmail(email: String, password: String)
         case registerUser(email: String, password: String, name: String, address: String)
         case getItems
+        case createStripeCustKey(apiVersion: String)
+        case createPaymentIntent(allParams: [String : Any])
         
         var baseURL: URL {
             return URL(string: baseURLString)!
@@ -35,17 +39,21 @@ class API: NSObject {
         
         var path: String {
             switch self {
-            case .loginWithEmail    : return "/oauth/signin"
-            case .registerUser      : return "/oauth/signup"
-            case .getItems          : return "/items"
+            case .loginWithEmail     : return "/oauth/signin"
+            case .registerUser       : return "/oauth/signup"
+            case .getItems           : return "/items"
+            case .createStripeCustKey: return "/ephemeral_keys"
+            case .createPaymentIntent: return "/create_payment_intent"
             }
         }
         
         var method: Moya.Method {
             switch self {
-            case .loginWithEmail    : return .post
-            case .registerUser      : return .post
-            case .getItems          : return .get
+            case .loginWithEmail     : return .post
+            case .registerUser       : return .post
+            case .getItems           : return .get
+            case .createStripeCustKey: return .post
+            case .createPaymentIntent: return .post
             }
         }
         
@@ -74,6 +82,15 @@ class API: NSObject {
             case .getItems:
                 return .requestPlain
                 
+            case let .createStripeCustKey(apiVersion):
+                return .requestParameters(
+                    parameters: [
+                        "api_version": apiVersion
+                    ], encoding: URLEncoding.httpBody
+                )
+                
+            case let .createPaymentIntent(allParams):
+                return .requestParameters(parameters: allParams, encoding: JSONEncoding.default)
             }
         }
         
@@ -91,24 +108,50 @@ class API: NSObject {
 // MARK: - STPCustomerEphemeralKeyProvider
 
 extension API: STPCustomerEphemeralKeyProvider {
-    func createCustomerKey(withAPIVersion apiVersion: String, completion: @escaping STPJSONResponseCompletionBlock) {
+    /// The fucntion accessible from checkout.
+    func createPaymentIntent(for item: Item, completion: @escaping ((Result<String, Error>) -> Void)) {
+        var allParams: [String: Any] = [
+            "metadata": [
+                "payment_request_id": "B3E611D1-5FA1-4410-9CEC-00958A5126CB",
+            ],
+        ]
         
-        let url = self.baseURL.appendingPathComponent("ephemeral_keys")
-        var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)!
-        urlComponents.queryItems = [URLQueryItem(name: "api_version", value: apiVersion)]
-        var request = URLRequest(url: urlComponents.url!)
-        request.httpMethod = "POST"
-        let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
-            guard let response = response as? HTTPURLResponse,
-                response.statusCode == 200,
-                let data = data,
-                let json = ((try? JSONSerialization.jsonObject(with: data, options: []) as? [String : Any]) as [String : Any]??) else {
-                completion(nil, error)
-                return
+        allParams["products"] = item.title
+        allParams["country"] = "Philippines"
+        
+        API.provider.request(.createPaymentIntent(allParams: allParams)) { (result) in
+            switch result {
+            case let .success(response):
+                guard let json = ((try? JSONSerialization.jsonObject(with: response.data, options: []) as? [String : Any]) as [String : Any]??),
+                    let secret = json?["secret"] as? String else {
+                        completion(.failure(NSError(domain: "aaaa", code: 300, userInfo: nil)))
+                        return
+                }
+                
+                completion(.success(secret))
+                
+            default:
+                UIViewController.current()?.alert(title: "PAYMENT ERROR!", okayButtonTitle: "OK", withBlock: nil)
             }
-            completion(json, nil)
-        })
-        task.resume()
 
+        }
+    }
+    
+    /// The actual protocol of `STPCustomerEphemeralKeyProvider`.
+    func createCustomerKey(withAPIVersion apiVersion: String, completion: @escaping STPJSONResponseCompletionBlock) {
+        API.provider.request(.createStripeCustKey(apiVersion: apiVersion)) { (result) in
+            switch result {
+            case let .success(response):
+                guard let json = ((try? JSONSerialization.jsonObject(with: response.data, options: []) as? [String : Any]) as [String : Any]??) else {
+                    completion(nil, NSError(domain: "aaaa", code: 300, userInfo: nil))
+                    return
+                }
+                
+                completion(json, nil)
+                
+            default:
+                UIViewController.current()?.alert(title: "Error STRIPE key", okayButtonTitle: "OK", withBlock: nil)
+            }
+        }
     }
 }
